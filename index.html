@@ -1,261 +1,538 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Daryl | Portfolio</title>
+    <title>
+      Daryl Jay Alidro | BSIT Student &amp; Aspiring Cybersecurity Specialist
+    </title>
     <meta
       name="description"
-      content="Portfolio of Daryl, BSIT junior student and aspiring cybersecurity specialist."
+      content="Portfolio of Daryl Jay Alidro, a third-year BSIT student at PUP specializing in Cybersecurity."
     />
+
+    <!-- Sets the saved theme before the page paints, so there is no flash -->
+    <script>
+      (function () {
+        var theme = "light";
+        try {
+          var saved = localStorage.getItem("theme");
+          if (saved === "light" || saved === "dark") {
+            theme = saved;
+          } else if (
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+          ) {
+            theme = "dark";
+          }
+        } catch (e) {}
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="cur dot" id="dot"></div>
-    <div class="cur ring" id="ring"></div>
+    <div class="progress" id="progress" aria-hidden="true"></div>
 
-    <nav id="nav">
-      <div class="wrap">
-        <a class="brand" href="#top">Daryl</a>
-        <button
-          class="menu"
-          id="menu"
-          aria-expanded="false"
-          aria-controls="links"
-        >
-          Menu
-        </button>
-        <div class="links" id="links">
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#focus">Currently Focusing On</a>
-          <a href="#experience">Experience</a>
-          <a href="#education">Education</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </div>
-    </nav>
+    <header class="nav" id="nav">
+      <div class="nav__inner">
+        <a class="nav__brand" href="#home">Daryl Alidro</a>
 
-    <header class="hero" id="top">
-      <div class="wrap">
-        <div>
-          <h1>Daryl</h1>
-          <p class="tagline">
-            BSIT Junior Student | Aspiring Cybersecurity Specialist
-          </p>
-          <div class="btns">
-            <a class="btn solid" href="#contact">Contact Me</a>
-            <a class="btn line" href="#about">About Me</a>
-          </div>
-        </div>
-        <div class="photo">
-          <img
-            src="hero_picture.png"
-            alt="Portrait of Daryl wearing a PUP lanyard"
-            width="819"
-            height="682"
-          />
+        <nav class="nav__links" id="navLinks" aria-label="Main">
+          <a href="#about" data-section="about">About</a>
+          <a href="#skills" data-section="skills">Skills</a>
+          <a href="#focus" data-section="focus">Currently Focusing On</a>
+          <a href="#projects" data-section="projects">Projects</a>
+          <a href="#experience" data-section="experience">Experience</a>
+          <a href="#education" data-section="education">Education</a>
+          <a href="#contact" data-section="contact">Contact</a>
+        </nav>
+
+        <div class="nav__actions">
+          <button
+            class="icon-btn"
+            id="themeToggle"
+            type="button"
+            aria-label="Switch to dark theme"
+          >
+            <svg class="icon icon--moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+            </svg>
+            <svg class="icon icon--sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+              />
+            </svg>
+          </button>
+          <button
+            class="icon-btn nav__burger"
+            id="burger"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="navLinks"
+          >
+            <span></span><span></span><span></span>
+          </button>
         </div>
       </div>
     </header>
 
-    <section class="about reveal" id="about">
-      <div class="wrap">
-        <h2>About</h2>
-        <p>
-          Third-year BSIT student at the Polytechnic University of the
-          Philippines, specializing in Cybersecurity, and a cadet of the
-          cybersecurity committee at CNCP - Manila. I have hands-on coursework
-          in networking, Java/OOP development, and data mining, plus
-          customer-facing experience from a Technical Support role that built my
-          problem-solving, troubleshooting, and communication skills. I'm
-          looking to apply my growing technical foundation and analytical
-          mindset to an entry-level IT or technical role.
-        </p>
-        <p class="member">
-          <b>Membership:</b> Cadet, Cybersecurity Committee, CNCP - Manila
-        </p>
-      </div>
-    </section>
-
-    <section class="reveal band" id="skills">
-      <div class="wrap">
-        <h2>Skills</h2>
-        <div class="grid g4">
-          <div class="card">
-            <h3>Programming</h3>
-            <ul class="tags">
-              <li>Python</li>
-              <li>Java (OOP)</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Networking</h3>
-            <ul class="tags">
-              <li>Cisco Packet Tracer</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Cybersecurity (Learning)</h3>
-            <ul class="tags">
-              <li>Network Security Basics</li>
-              <li>Threats and Vulnerabilities</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Professional</h3>
-            <ul class="tags">
-              <li>Technical Support</li>
-              <li>Troubleshooting</li>
-              <li>Customer Service</li>
-              <li>Communication</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="reveal" id="projects">
-      <div class="wrap">
-        <h2>Projects</h2>
-        <div class="grid g3">
-          <article class="card">
-            <span class="badge wip">In progress</span>
-            <h3>Game Launcher</h3>
-            <p>
-              A Python desktop launcher for Windows with a clean menu of the
-              games on my PC. Built through vibe coding as a practice project.
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="home">
+        <div class="hero__grid" aria-hidden="true"></div>
+        <div class="container hero__inner">
+          <div class="hero__text">
+            <p class="hero__hello">Hi, I'm</p>
+            <h1 class="hero__name">Daryl Jay Alidro</h1>
+            <p class="hero__tagline">
+              BSIT Junior Student |
+              <span class="typed" id="typed" aria-live="off"
+                >Aspiring Cybersecurity Specialist</span
+              ><span class="caret" aria-hidden="true"></span>
             </p>
-          </article>
-          <article class="card">
-            <span class="badge grp">Group project, UI mockup</span>
-            <h3>Trackoon</h3>
-            <p>
-              A price-tracker app concept for everything sold at the PUP Lagoon:
-              food, merchandise, and services. Designed as a group project, with
-              the mockup made in Figma Make AI.
-            </p>
-          </article>
-          <article class="card">
-            <span class="badge idea">Idea</span>
-            <h3>Latag</h3>
-            <p>
-              A website or app idea for PUP Lagoon student vendors to register
-              their name, products, and the times they'll be at the lagoon, so
-              students can check what's available and discover interesting
-              products.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="reveal band" id="focus">
-      <div class="wrap">
-        <h2>Currently Focusing On</h2>
-        <div class="grid g2">
-          <div class="card">
-            <h3>SQL and Data Analysis</h3>
-            <p>
-              Practicing SQL and building my data analyst skills through
-              hands-on practice and online courses.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Cybersecurity</h3>
-            <p>
-              Building my foundation through online courses and by participating
-              in cybersecurity events.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="reveal" id="experience">
-      <div class="wrap">
-        <h2>Experience</h2>
-        <div class="card">
-          <div class="head">
-            <div>
-              <h3>Technical Support Representative (AT&amp;T account)</h3>
-              <p class="place">Startek, Pasig City</p>
+            <div class="hero__buttons">
+              <a class="btn btn--primary" href="#contact">Contact Me</a>
+              <a class="btn btn--ghost" href="#about">About Me</a>
             </div>
-            <span class="when">Jul - Dec 2025</span>
           </div>
-          <ul class="bul">
-            <li>
-              Provided technical troubleshooting and issue resolution support
-              for AT&amp;T customers via phone.
-            </li>
-            <li>
-              Diagnosed connectivity, device, and account-related issues,
-              escalating complex cases when needed.
-            </li>
-            <li>
-              Used internal ticketing and CRM systems to log, track, and resolve
-              customer concerns.
-            </li>
-            <li>
-              Maintained strong communication and composure while working in a
-              fast-paced, metrics-driven environment.
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
 
-    <section class="reveal band" id="education">
-      <div class="wrap">
-        <h2>Education</h2>
-        <div class="card">
-          <div class="head">
-            <div>
-              <h3>Bachelor of Science in Information Technology</h3>
-              <p class="place">Polytechnic University of the Philippines</p>
+          <div class="hero__photo">
+            <div class="hero__arch">
+              <img
+                src="assets/hero_picture.png"
+                alt="Daryl Jay Alidro"
+                width="520"
+                height="560"
+              />
             </div>
-            <span class="when">2024 - 2028 (Expected)</span>
           </div>
-          <p class="note">
-            Specialization in Cybersecurity. Relevant coursework: Networking,
-            Java/OOP, Data Mining, Machine Learning.
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="section" id="about">
+        <div class="container">
+          <h2 class="section__title reveal">About</h2>
+          <p class="about__text reveal">
+            I'm a third-year BSIT student at the Polytechnic University of the
+            Philippines, specializing in Cybersecurity, and a cadet of the
+            cybersecurity committee at CNCP - Manila. My coursework covers
+            networking, Java OOP, and data mining, and I spent five months as a
+            Technical Support Representative on the AT&amp;T account at Startek,
+            where I learned to troubleshoot problems calmly and communicate
+            clearly under pressure. I'm looking for an entry-level IT or
+            technical role where I can keep growing.
           </p>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="dark" id="contact">
-      <div class="wrap">
-        <h2>Contact</h2>
-        <p class="lead">
-          Want to talk about work, projects, or cybersecurity? Reach me through
-          any of these.
-        </p>
-        <div class="rows">
-          <a class="row" href="mailto:alidrodaryl8@gmail.com"
-            ><span>Email</span><span>alidrodaryl8@gmail.com</span></a
-          >
-          <button class="row" id="dc" type="button" data-copy=".ryl__">
-            <span>Discord</span><span id="dcv">.ryl__ (click to copy)</span>
-          </button>
-          <a
-            class="row"
-            href="https://www.facebook.com/Ryll.39/"
-            target="_blank"
-            rel="noopener"
-            ><span>Facebook</span><span>facebook.com/Ryll.39</span></a
-          >
+      <!-- SKILLS -->
+      <section class="section" id="skills">
+        <div class="container">
+          <h2 class="section__title reveal">Skills</h2>
+
+          <div class="filters reveal" role="tablist" aria-label="Filter skills">
+            <button
+              class="filter is-active"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              data-filter="all"
+            >
+              All
+            </button>
+            <button
+              class="filter"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-filter="technical"
+            >
+              Technical
+            </button>
+            <button
+              class="filter"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-filter="professional"
+            >
+              Professional
+            </button>
+            <button
+              class="filter"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-filter="learning"
+            >
+              Learning
+            </button>
+          </div>
+
+          <div class="skill-groups">
+            <div class="skill-group reveal">
+              <h3 class="skill-group__title">Programming</h3>
+              <ul class="tags">
+                <li
+                  class="tag"
+                  data-type="technical"
+                  data-tip="Where my programming started"
+                  tabindex="0"
+                >
+                  <span class="tag__name">Python</span
+                  ><span class="level level--comfortable">Comfortable</span>
+                </li>
+                <li
+                  class="tag"
+                  data-type="technical"
+                  data-tip="The core of my OOP coursework"
+                  tabindex="0"
+                >
+                  <span class="tag__name">Java OOP</span
+                  ><span class="level level--comfortable">Comfortable</span>
+                </li>
+                <li
+                  class="tag"
+                  data-type="technical"
+                  data-tip="Practiced in programming courses"
+                  tabindex="0"
+                >
+                  <span class="tag__name">C</span
+                  ><span class="level level--comfortable">Comfortable</span>
+                </li>
+                <li
+                  class="tag"
+                  data-type="technical"
+                  data-tip="Used for database and SQL practice"
+                  tabindex="0"
+                >
+                  <span class="tag__name">MySQL</span
+                  ><span class="level level--comfortable">Comfortable</span>
+                </li>
+                <li
+                  class="tag"
+                  data-type="technical"
+                  data-tip="Just a little exposure so far"
+                  tabindex="0"
+                >
+                  <span class="tag__name">COBOL</span
+                  ><span class="level level--basics">Basics</span>
+                </li>
+                <li
+                  class="tag"
+                  data-type="technical"
+                  data-tip="Just a little exposure so far"
+                  tabindex="0"
+                >
+                  <span class="tag__name">R</span
+                  ><span class="level level--basics">Basics</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="skill-group reveal">
+              <h3 class="skill-group__title">Networking</h3>
+              <ul class="tags">
+                <li
+                  class="tag"
+                  data-type="technical"
+                  data-tip="Network labs in my coursework"
+                  tabindex="0"
+                >
+                  <span class="tag__name">Cisco Packet Tracer</span
+                  ><span class="level level--comfortable">Comfortable</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="skill-group reveal">
+              <h3 class="skill-group__title">Professional</h3>
+              <ul class="tags">
+                <li
+                  class="tag"
+                  data-type="professional"
+                  data-tip="Used daily at Startek"
+                  tabindex="0"
+                >
+                  <span class="tag__name">Technical Support</span
+                  ><span class="level level--comfortable">Comfortable</span>
+                </li>
+                <li
+                  class="tag"
+                  data-type="professional"
+                  data-tip="Used daily at Startek"
+                  tabindex="0"
+                >
+                  <span class="tag__name">Troubleshooting</span
+                  ><span class="level level--comfortable">Comfortable</span>
+                </li>
+                <li
+                  class="tag"
+                  data-type="professional"
+                  data-tip="Used daily at Startek"
+                  tabindex="0"
+                >
+                  <span class="tag__name">Customer Service</span
+                  ><span class="level level--comfortable">Comfortable</span>
+                </li>
+                <li
+                  class="tag"
+                  data-type="professional"
+                  data-tip="Used daily at Startek"
+                  tabindex="0"
+                >
+                  <span class="tag__name">Communication</span
+                  ><span class="level level--comfortable">Comfortable</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="skill-group reveal">
+              <h3 class="skill-group__title">Cybersecurity (Learning)</h3>
+              <ul class="tags">
+                <li
+                  class="tag"
+                  data-type="learning"
+                  data-tip="Learning through online courses"
+                  tabindex="0"
+                >
+                  <span class="tag__name">Network Security Basics</span
+                  ><span class="level level--learning">Learning</span>
+                </li>
+                <li
+                  class="tag"
+                  data-type="learning"
+                  data-tip="Learning through online courses"
+                  tabindex="0"
+                >
+                  <span class="tag__name">Threats and Vulnerabilities</span
+                  ><span class="level level--learning">Learning</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="levelup reveal">
+            <h3 class="levelup__title">Currently Leveling Up</h3>
+            <ul class="levelup__list">
+              <li class="levelup__item">
+                <span class="pulse" aria-hidden="true"></span>SQL
+              </li>
+              <li class="levelup__item">
+                <span class="pulse" aria-hidden="true"></span>Cybersecurity
+              </li>
+              <li class="levelup__item">
+                <span class="pulse" aria-hidden="true"></span>ISC2 CC (Certified
+                in Cybersecurity)
+                <span class="levelup__status">In progress</span>
+              </li>
+            </ul>
+          </div>
         </div>
-        <footer>&copy; 2026 Daryl</footer>
+      </section>
+
+      <!-- CURRENTLY FOCUSING ON -->
+      <section class="section" id="focus">
+        <div class="container">
+          <h2 class="section__title reveal">Currently Focusing On</h2>
+          <div class="cards cards--two">
+            <article class="card tilt reveal">
+              <h3 class="card__title">SQL and Data Analysis</h3>
+              <p class="card__text">
+                Practicing SQL to build my data analyst skills, one query at a
+                time.
+              </p>
+            </article>
+            <article class="card tilt reveal">
+              <h3 class="card__title">Cybersecurity</h3>
+              <p class="card__text">
+                Taking online courses, joining cybersecurity events, and
+                studying for the ISC2 CC (Certified in Cybersecurity)
+                certification.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="section" id="projects">
+        <div class="container">
+          <h2 class="section__title reveal">Projects</h2>
+          <div class="cards cards--three">
+            <article class="card tilt reveal">
+              <span class="status status--building">Still building</span>
+              <h3 class="card__title">Game Launcher</h3>
+              <p class="card__text">
+                A game launcher I vibe coded, built on a whim. I'm still working
+                on it.
+              </p>
+            </article>
+            <article class="card tilt reveal">
+              <span class="status status--mockup">Mockup</span>
+              <h3 class="card__title">Trackoon</h3>
+              <p class="card__text">
+                A group project: an app concept that tracks prices of everything
+                at the PUP Lagoon, from food to merchandise to services. Made as
+                a mockup in Figma Make AI.
+              </p>
+            </article>
+            <article class="card tilt reveal">
+              <span class="status status--idea">Idea</span>
+              <h3 class="card__title">Latag</h3>
+              <p class="card__text">
+                An idea for a website or app where PUP Lagoon student vendors
+                list their products and the times they'll be there, so students
+                can see what to buy and discover new products. Name is a
+                placeholder.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section class="section" id="experience">
+        <div class="container">
+          <h2 class="section__title reveal">Experience</h2>
+          <div class="timeline">
+            <article class="timeline__item reveal">
+              <div class="timeline__head">
+                <h3 class="timeline__title">
+                  Technical Support Representative
+                </h3>
+                <span class="timeline__date">Jul - Dec 2025</span>
+              </div>
+              <p class="timeline__place">
+                AT&amp;T Account, Startek, Pasig City
+              </p>
+              <ul class="timeline__list">
+                <li>
+                  Provided phone troubleshooting and issue resolution support
+                  for AT&amp;T customers.
+                </li>
+                <li>
+                  Diagnosed connectivity, device, and account issues, escalating
+                  complex cases when needed.
+                </li>
+                <li>
+                  Used internal ticketing and CRM systems to log, track, and
+                  resolve customer concerns.
+                </li>
+                <li>
+                  Kept strong communication and composure in a fast-paced,
+                  metrics-driven environment.
+                </li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section class="section" id="education">
+        <div class="container">
+          <h2 class="section__title reveal">Education</h2>
+          <div class="timeline">
+            <article class="timeline__item reveal">
+              <div class="timeline__head">
+                <h3 class="timeline__title">BS Information Technology</h3>
+                <span class="timeline__date">Expected 2028</span>
+              </div>
+              <p class="timeline__place">
+                Polytechnic University of the Philippines
+              </p>
+              <p class="timeline__note">
+                Cybersecurity specialization. Relevant coursework: networking,
+                Java/OOP, data mining, and machine learning.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="section section--last" id="contact">
+        <div class="container">
+          <h2 class="section__title reveal">Contact</h2>
+          <p class="contact__intro reveal">
+            Open to entry-level IT and technical opportunities. Reach out
+            anywhere below.
+          </p>
+          <div class="cards cards--three">
+            <div class="card contact-card reveal">
+              <h3 class="card__title">Email</h3>
+              <p class="card__text">alidrodaryl8@gmail.com</p>
+              <div class="contact-card__actions">
+                <a
+                  class="btn btn--small btn--primary"
+                  href="mailto:alidrodaryl8@gmail.com"
+                  >Send an email</a
+                >
+                <button
+                  class="btn btn--small btn--ghost"
+                  type="button"
+                  data-copy="alidrodaryl8@gmail.com"
+                >
+                  Copy
+                </button>
+              </div>
+            </div>
+            <div class="card contact-card reveal">
+              <h3 class="card__title">Discord</h3>
+              <p class="card__text">.ryl__</p>
+              <div class="contact-card__actions">
+                <button
+                  class="btn btn--small btn--ghost"
+                  type="button"
+                  data-copy=".ryl__"
+                >
+                  Copy username
+                </button>
+              </div>
+            </div>
+            <div class="card contact-card reveal">
+              <h3 class="card__title">Facebook</h3>
+              <p class="card__text">Ryll.39</p>
+              <div class="contact-card__actions">
+                <a
+                  class="btn btn--small btn--primary"
+                  href="https://www.facebook.com/Ryll.39/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Open profile</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>&copy; <span id="year">2026</span> Daryl Jay Alidro</p>
       </div>
-    </section>
+    </footer>
+
+    <button class="to-top" id="toTop" type="button" aria-label="Back to top">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 19V5M5 12l7-7 7 7" />
+      </svg>
+    </button>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
     <script src="script.js"></script>
   </body>
